@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/app-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import { toast } from 'sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -37,6 +38,9 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
 
         patch(route('profile.update'), {
             preserveScroll: true,
+            onSuccess:()=>{
+                toast.success('Profile updated successfully');
+            }
         });
     };
 
@@ -107,7 +111,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                         <div className="flex items-center gap-4">
                             <Button disabled={processing}>Save</Button>
 
-                            <Transition
+                            {/* <Transition
                                 show={recentlySuccessful}
                                 enter="transition ease-in-out"
                                 enterFrom="opacity-0"
@@ -115,7 +119,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                                 leaveTo="opacity-0"
                             >
                                 <p className="text-sm text-neutral-600">Saved</p>
-                            </Transition>
+                            </Transition> */}
                         </div>
                     </form>
                 </div>
