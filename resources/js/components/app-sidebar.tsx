@@ -13,11 +13,11 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
-    {
-        title: 'Posts',
-        href: '/posts',
-        icon: FileIcon,
-    },
+    // {
+    //     title: 'Posts',
+    //     href: '/posts',
+    //     icon: FileIcon,
+    // },
     {
         title: 'Clients',
         href: '/clients',

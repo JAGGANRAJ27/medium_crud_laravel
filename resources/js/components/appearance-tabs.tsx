@@ -1,6 +1,6 @@
 import { Appearance, useAppearance } from '@/hooks/use-appearance';
 import { cn } from '@/lib/utils';
-import { LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
+import { LucideIcon, Monitor, Moon, PaintBucket, Sun } from 'lucide-react';
 import { HTMLAttributes } from 'react';
 
 export default function AppearanceToggleTab({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) {
@@ -10,6 +10,7 @@ export default function AppearanceToggleTab({ className = '', ...props }: HTMLAt
         { value: 'light', icon: Sun, label: 'Light' },
         { value: 'dark', icon: Moon, label: 'Dark' },
         { value: 'system', icon: Monitor, label: 'System' },
+        { value: 'pink', icon: PaintBucket, label: 'Pink' },
     ];
 
     return (

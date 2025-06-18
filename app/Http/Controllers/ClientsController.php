@@ -13,7 +13,9 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('clients/index');
+        return Inertia::render('clients/index',[
+            "clients" => Clients::latest()->get()
+        ]);
     }
 
     /**
@@ -21,7 +23,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('clients/create');
     }
 
     /**
@@ -29,7 +31,29 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
+            "dob" => "required",
+            "description" => "required",
+            "username" => "required",
+            "password" => "required"
+        ]);
+
+        Clients::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "dob" => $request->dob,
+            "description" => $request->description,
+            "username" => $request->username,
+            "password" => $request->password
+        ]);
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -45,7 +69,9 @@ class ClientsController extends Controller
      */
     public function edit(Clients $clients)
     {
-        //
+        return Inertia::render('clients/edit',[
+            "clients" => $clients
+        ]);
     }
 
     /**
@@ -53,7 +79,29 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Clients $clients)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
+            "dob" => "required",
+            "description" => "required",
+            "username" => "required",
+            "password" => "required"
+        ]);
+
+        $clients->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "dob" => $request->dob,
+            "description" => $request->description,
+            "username" => $request->username,
+            "password" => $request->password
+        ]);
+        $clients->save();
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -61,6 +109,7 @@ class ClientsController extends Controller
      */
     public function destroy(Clients $clients)
     {
-        //
+        $clients->delete();
+        return redirect()->route('clients.index');
     }
 }
